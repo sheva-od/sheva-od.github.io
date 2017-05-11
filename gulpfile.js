@@ -3,21 +3,20 @@ var pug = require('gulp-pug');
 var sass = require('gulp-sass');
 
 gulp.task('pug', function(){
-  return gulp.src('app/*.pug')
+  return gulp.src('*.pug')
     .pipe(pug())
-    .pipe(gulp.dest('app/'))
+    .pipe(gulp.dest(''))
 });
 
 gulp.task('sass', function () {
-  return gulp.src('app/*.scss')
+  return gulp.src('*.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('app/'));
+    .pipe(gulp.dest(''));
 });
 
 gulp.task('watch', function() {
-  gulp.watch(['app/*.scss'], ['sass']);
-  gulp.watch(['app/*.pug'], ['pug']);
-  gulp.watch(['app/*.coffee'], ['coffee']);
+  gulp.watch(['*.scss'], ['sass']);
+  gulp.watch(['*.pug'], ['pug']);
 });
 
 gulp.task('default', [ 'pug', 'sass' ]);
