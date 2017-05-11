@@ -1,0 +1,77 @@
+/* app css stylesheet */
+
+$highlightColor: green;
+
+.full-width {
+  width: 100%;
+}
+
+.badge {
+  background-color: #259b24;
+  border-radius: 10px;
+  color: white;
+  margin: 0 0 0 6px;
+  padding: 4px 8px;
+}
+
+.colored-button {
+  background-color: $highlightColor;
+  border-color: $highlightColor;
+  color: #fff;
+  
+  &:hover {
+    background-color: $highlightColor;
+    color: #fff;
+  }
+  &:active,
+  &:focus,
+  &:visited,
+  &[disabled="disabled"] {
+    background-color: $highlightColor !important;
+    color: #fff !important;
+    outline: none !important;
+  }
+}
+
+.card {
+  background-color: #fff;
+  display: block;
+}
+
+.styled-input {
+
+}
+
+.item {
+  border-left: 4px solid transparent;
+  transition: border-color .3s;
+
+  &.active-item {
+    border-left: 4px solid red;
+  }
+}
+
+md-list-item.comment {
+  align-items: flex-start;
+  padding: 16px 0;
+
+  &:nth-of-type(odd) .avatar {
+    background-color: orange;
+  }
+
+  &:nth-of-type(even) .avatar {
+    background-color: blue;
+  }
+
+  .avatar {
+    border-radius: 0;
+    height: 60px;
+    margin-top: 4px;
+    width: 60px;
+
+    &.default {
+      background-color: gray;
+      margin-top: 0;
+    }
+  }
+}
