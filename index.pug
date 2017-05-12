@@ -14,40 +14,42 @@ html
 
 	body(ng-app="notesApp" ng-controller="appCtrl")
 
-		div(layout="column" style="height: 100%;" ng-cloak)
+		div.full-height(layout="column" ng-cloak)
 			section(layout="row" flex)
 				md-sidenav.md-sidenav-left(md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4")
-					md-toolbar
-						h1.md-toolbar-tools Main
-					md-toolbar
+					md-toolbar.title-wrap
+						h1.md-toolbar-tools.title Main
+						md-button.md-icon-button.md-primary.pull-right(ng-click="close()" hide-gt-md)
+							span.glyphicon.glyphicon-remove
+					md-toolbar.active-tool
 						h1.md-toolbar-tools Overview
-					md-content(layout-padding)
-						md-button.md-primary(ng-click="close()" hide-gt-md) Close Sidenav Left
+
 				md-content.full-width
 					div
-						md-button.md-primary(ng-click="toggleLeft()" hide-gt-md) Toggle left
+						md-button.md-icon-button.md-primary(ng-click="toggleLeft()" hide-gt-md)
+							span.glyphicon.glyphicon-align-left
 					div.container-fluid
 						div.row
 							div.col-xs-12.col-sm-6.md-padding
-								md-whiteframe.md-whiteframe-4dp.card.full-width
-									h3.md-padding Items
-									div.row.md-padding
-										div.col-xs-8
-											div.form-group
-												input.full-width.form-control.styled-input(type="text" ng-model="itemTitle" placeholder="Type name here...")
-										div.col-xs-4
+								md-whiteframe.md-whiteframe-4dp.card.items-card.full-width
+									h3.md-padding.title Items
+									div.md-padding
+										div.pull-right
 											button.colored-button.btn.btn-default(ng-click="addItem(itemTitle)" ng-disabled="!itemTitle.length") Add New
+										div.form-group.flex-container
+											input.full-width.form-control(type="text" ng-model="itemTitle" placeholder="Type name here...")
 									div.items
 										div.clearfix.item(ng-repeat="item in items track by $index" ng-class="{'active-item': activeIndex == $index}")
-											md-button.md-primary.md-raised.pull-right(ng-click="removeItem($index)") Delete
-											div.md-padding(ng-click="chooseItem($index)")
+											div.pull-right
+												button.outline-button.btn.btn-default(ng-click="removeItem($index)") Delete
+											div.item-title.flex-container(ng-click="chooseItem($index)")
 												p
 													strong {{item.title}}&nbsp;
 													span.badge {{item.comments.length}}
+											md-divider
 							div.col-xs-12.col-sm-6.md-padding
 								md-whiteframe.md-whiteframe-4dp.card.full-width.md-padding
-									h3 
-										| Comments \#{{activeIndex + 1}}
+									h3.title Comments \#{{activeIndex + 1}}
 									md-list
 										md-list-item.comment.md-padding(ng-repeat="comment in items[activeIndex].comments track by $index")
 											div.avatar.md-avatar
@@ -56,13 +58,11 @@ html
 											md-divider(ng-hide="$last")
 										md-list-item.comment.md-padding
 											div.avatar.default.md-avatar
-											form.full-width
-												textarea.full-width.form-control(ng-model="itemComment")
-												button.pull-right(type="submit" ng-click="addComment(itemComment)") Add Comment
-					
+											textarea.full-width.form-control(ng-model="itemComment" ng-textarea-enter="addComment(itemComment)")
 
 		script(src="bower_components/angular/angular.js")
 		script(src="bower_components/angular-aria/angular-aria.js")
 		script(src="bower_components/angular-animate/angular-animate.js")
 		script(src="bower_components/angular-material/angular-material.js")
+		script(src="bower_components/ng-textarea-enter/src/ng-textarea-enter.js")
 		script(src="app.js")
