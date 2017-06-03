@@ -1,22 +1,19 @@
+'use strict';
+
 var gulp = require('gulp');
-var pug = require('gulp-pug');
 var sass = require('gulp-sass');
+var livereload = require('gulp-livereload');
 
-gulp.task('pug', function(){
-  return gulp.src('*.pug')
-    .pipe(pug())
-    .pipe(gulp.dest(''))
-});
-
+gulp.task('default', ['sass']);
+ 
 gulp.task('sass', function () {
-  return gulp.src('*.scss')
+  return gulp.src('./sass/*.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest(''));
+    .pipe(gulp.dest('./css'))
+		.pipe(livereload());
 });
-
-gulp.task('watch', function() {
-  gulp.watch(['*.scss'], ['sass']);
-  gulp.watch(['*.pug'], ['pug']);
+ 
+gulp.task('watch', ['sass'], function() {
+	livereload.listen();
+  gulp.watch(['./sass/*.scss'], ['sass']);
 });
-
-gulp.task('default', [ 'pug', 'sass' ]);

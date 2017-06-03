@@ -1,74 +1,112 @@
-angular
-  .module('notesApp', ['ngMaterial', 'ngTextareaEnter', 'ngAnimate'])
-  .controller('appCtrl', function ($scope, $timeout, $mdSidenav, $log) {
-    $scope.toggleLeft = buildDelayedToggler('left');
-    $scope.activeIndex = (localStorage.getItem('items')!==null) ? 0 : 1;
-    $scope.saved = localStorage.getItem('items');
-    $scope.items = (localStorage.getItem('items')!==null) ? JSON.parse($scope.saved) : [
-      {
-        title: 'First item with custom name',
-        comments: [
-          'A variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popu- larized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980s',
-          'A variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popu- larized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980s'
-        ]
-      },
-      {
-        title: 'Second item is active',
-        comments: [
-          'A variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popu- larized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980s',
-          'A variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popu- larized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980s',
-          'A variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popu- larized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980sA varia- tion of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popular- ized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980sA varia- tion of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popular- ized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980s'
-        ]
-      }
-    ];
-	  localStorage.setItem('items', JSON.stringify($scope.items));
+$(".button-collapse").sideNav({
+	edge: 'right'
+});
 
-    function debounce(func, wait, context) {
-      var timer;
+$(document).ready(function() {
+  $('select').material_select();
+});
 
-      return function debounced() {
-        var context = $scope,
-            args = Array.prototype.slice.call(arguments);
-        $timeout.cancel(timer);
-        timer = $timeout(function() {
-          timer = undefined;
-          func.apply(context, args);
-        }, wait || 10);
-      };
-    }
+$('.toggle-calendar').dateRangePicker({
+  format: 'MMMM D, YYYY',
+  showShortcuts: true,
+  startOfWeek: 'monday',
+	shortcuts : null,
+	language:'en',
+	customShortcuts:
+	[
+		{
+			name: 'TODAY',
+			dates : function()
+			{
+				var movetodate = moment().toDate();
+				return [movetodate];
+			}
+		},
+		{
+			name: 'YESTERDAY',
+			dates : function()
+			{
+				var movetodate = moment().add(-1, 'days').toDate();
+				return [movetodate];
+			}
+		},
+		{
+			name: 'LAST WEEK',
+			dates : function()
+			{
+        var start = moment().subtract(1, 'weeks').startOf('isoWeek').toDate();
+				var end =  moment().subtract(1, 'weeks').endOf('isoWeek').toDate();
+				return [start,end];
+			}
+		},
+		{
+			name: 'LAST MONTH',
+			dates : function()
+			{
+        var start = moment().subtract(1, 'months').date(1).toDate();
+				var end = moment().subtract(1, 'months').endOf('month').toDate();
+				return [start,end];
+			}
+		},
+		{
+			name: 'LAST 3 MONTHS',
+			dates : function()
+			{
+        var start = moment().subtract(3, 'months').date(1).toDate();
+				var end = moment().subtract(1, 'months').endOf('month').toDate();
+				return [start,end];
+			}
+		}
+	]
+});
 
-    function buildDelayedToggler(navID) {
-      return debounce(function() {
-        $mdSidenav(navID).toggle()
-      }, 200);
-    }
+$('.shortcuts b').text('Select:');
+$('.separator-day').text('>');
+$('.apply-btn').val('OK');
 
-    $scope.close = function () {
-      $mdSidenav('left').close()
-    };
+$('.toggle-menu').on('click', function(e){
+  e.preventDefault();
+  $('#sidebar').toggleClass('expanded');
+});
 
-    $scope.chooseItem = function (index) {
-      $scope.activeIndex = index;
-    };
+$('.menu a').on('click', function(e){
+  e.preventDefault();
+  var $parent = $(this).parent();
 
-    $scope.addComment = function (newComment) {
-      $scope.items[$scope.activeIndex].comments.push(newComment);
-      $scope.itemComment = '';
-      localStorage.setItem('items', JSON.stringify($scope.items));
-    };
+  $('.menu li').removeClass('active');
+  if(!$parent.hasClass('side-submenu') && $parent.parent().hasClass('menu')) {
+    $('.menu li').removeClass('open');
+  }
+  $parent.addClass('active');
+});
 
-    $scope.addItem = function (newItem) {
-      $scope.items.push({title: newItem, comments: []});
-      $scope.itemTitle = '';
-      $scope.activeIndex = $scope.items.length - 1;
-      localStorage.setItem('items', JSON.stringify($scope.items));
-    };
+$('.side-submenu a').on('click', function(e){
+  e.preventDefault();
+  var $parent = $(this).parent();
+  var $defaultActive = $('.side-submenu-dropdown li:nth-child(2)');
 
-    $scope.removeItem = function (index) {
-      if($scope.activeIndex == $scope.items.length - 1) {
-        $scope.activeIndex = $scope.items.length - 2;
-      }
-      $scope.items.splice(index, 1);
-      localStorage.setItem('items', JSON.stringify($scope.items));
-    };
-  })
+  $parent.toggleClass('open');
+  $defaultActive.addClass('active');
+  $('#sidebar, li.side-submenu').addClass('visible-overflow');
+  if($parent.hasClass('active') && !$parent.hasClass('side-submenu')) {
+    $defaultActive.removeClass('active');
+  }
+});
+
+$('.toggle-filter').on('click', function(e){
+  e.preventDefault();
+
+  $('#filter-wrap').toggleClass('open');
+});
+
+$('#moreItems').on('click', function(e){
+  e.preventDefault();
+
+  if($('.more-items').hasClass('open')) {
+    $(this).html('More<i class="material-icons right">arrow_drop_down</i>');
+  } else {
+    $(this).html('Less<i class="material-icons right up">arrow_drop_down</i>');
+  }
+
+  $('.more-items').toggleClass('open');
+});
