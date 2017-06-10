@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+	// show active navbar item on scroll
+
 	$(document).on("scroll", onScroll);
 
 	function onScroll(event){
@@ -17,6 +19,8 @@ $(document).ready(function() {
 		});
 	}
 
+	// smooth scroll after click on navbar link
+
 	$('.nav-links a').on('click', function(event){
     event.preventDefault();
 
@@ -28,6 +32,8 @@ $(document).ready(function() {
 		}, 500);
 	});
 
+	// insert options to select and choose 1993 as deafult
+
 	for (i = 2000; i > 1950; i--) {
 		$('#yearPicker').append($('<option />').val(i).html(i));
 	}
@@ -35,10 +41,14 @@ $(document).ready(function() {
 
 	$('#yearPicker').material_select();
 
+	// initialize sidenav
+
 	$(".button-collapse").sideNav({
 		menuWidth: 250,
 		closeOnClick: true
 	});
+
+	// initialize slider and set 2 option as default
 
 	var slider = document.getElementById('slider');
 	noUiSlider.create(slider, {
