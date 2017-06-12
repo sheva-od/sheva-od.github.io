@@ -1,112 +1,67 @@
-$(".button-collapse").sideNav({
-	edge: 'right'
-});
-
 $(document).ready(function() {
-  $('select').material_select();
-});
 
-$('.toggle-calendar').dateRangePicker({
-  format: 'MMMM D, YYYY',
-  showShortcuts: true,
-  startOfWeek: 'monday',
-	shortcuts : null,
-	language:'en',
-	customShortcuts:
-	[
-		{
-			name: 'TODAY',
-			dates : function()
-			{
-				var movetodate = moment().toDate();
-				return [movetodate];
+	// show active navbar item on scroll
+
+	$(document).on("scroll", onScroll);
+
+	function onScroll(event){
+		var scrollPos = $(document).scrollTop();
+		$('.nav-links a').each(function () {
+			var currLink = $(this);
+			var refElement = $(currLink.attr("href"));
+			if ((refElement.position().top - 100 <= scrollPos) && (refElement.position().top - 100 + refElement.outerHeight() > scrollPos)) {
+				$('.nav-links li').removeClass("active");
+				currLink.parent().addClass("active");
 			}
-		},
-		{
-			name: 'YESTERDAY',
-			dates : function()
-			{
-				var movetodate = moment().add(-1, 'days').toDate();
-				return [movetodate];
+			else {
+				currLink.parent().removeClass("active");
 			}
-		},
-		{
-			name: 'LAST WEEK',
-			dates : function()
-			{
-        var start = moment().subtract(1, 'weeks').startOf('isoWeek').toDate();
-				var end =  moment().subtract(1, 'weeks').endOf('isoWeek').toDate();
-				return [start,end];
-			}
-		},
-		{
-			name: 'LAST MONTH',
-			dates : function()
-			{
-        var start = moment().subtract(1, 'months').date(1).toDate();
-				var end = moment().subtract(1, 'months').endOf('month').toDate();
-				return [start,end];
-			}
-		},
-		{
-			name: 'LAST 3 MONTHS',
-			dates : function()
-			{
-        var start = moment().subtract(3, 'months').date(1).toDate();
-				var end = moment().subtract(1, 'months').endOf('month').toDate();
-				return [start,end];
-			}
+		});
+	}
+
+	// smooth scroll after click on navbar link
+
+	$('.nav-links a').on('click', function(event){
+    event.preventDefault();
+
+		$('.nav-links li').removeClass('active');
+		$(this).parent().addClass('active');
+
+		$('html, body').animate({
+			scrollTop: $( $.attr(this, 'href') ).offset().top - 20
+		}, 500);
+	});
+
+	// insert options to select and choose 1993 as deafult
+
+	for (i = 2000; i > 1950; i--) {
+		$('#yearPicker').append($('<option />').val(i).html(i));
+	}
+	$("#yearPicker option[value='1993']").attr("selected","selected");
+
+	$('#yearPicker').material_select();
+
+	// initialize sidenav
+
+	$(".button-collapse").sideNav({
+		menuWidth: 250,
+		closeOnClick: true
+	});
+
+	// initialize slider and set 2 option as default
+
+	var slider = document.getElementById('slider');
+	noUiSlider.create(slider, {
+		start: [0],
+		snap: true,
+		connect: [true, false],
+		range: {
+			'min': 0,
+			'25%': 1,
+			'50%': 2,
+			'max': 3
 		}
-	]
-});
+	});
+	slider.noUiSlider.set(2);
 
-$('.shortcuts b').text('Select:');
-$('.separator-day').text('>');
-$('.apply-btn').val('OK');
-
-$('.toggle-menu').on('click', function(e){
-  e.preventDefault();
-  $('#sidebar').toggleClass('expanded');
-});
-
-$('.menu a').on('click', function(e){
-  e.preventDefault();
-  var $parent = $(this).parent();
-
-  $('.menu li').removeClass('active');
-  if(!$parent.hasClass('side-submenu') && $parent.parent().hasClass('menu')) {
-    $('.menu li').removeClass('open');
-  }
-  $parent.addClass('active');
-});
-
-$('.side-submenu a').on('click', function(e){
-  e.preventDefault();
-  var $parent = $(this).parent();
-  var $defaultActive = $('.side-submenu-dropdown li:nth-child(2)');
-
-  $parent.toggleClass('open');
-  $defaultActive.addClass('active');
-  $('#sidebar, li.side-submenu').addClass('visible-overflow');
-  if($parent.hasClass('active') && !$parent.hasClass('side-submenu')) {
-    $defaultActive.removeClass('active');
-  }
-});
-
-$('.toggle-filter').on('click', function(e){
-  e.preventDefault();
-
-  $('#filter-wrap').toggleClass('open');
-});
-
-$('#moreItems').on('click', function(e){
-  e.preventDefault();
-
-  if($('.more-items').hasClass('open')) {
-    $(this).html('More<i class="material-icons right">arrow_drop_down</i>');
-  } else {
-    $(this).html('Less<i class="material-icons right up">arrow_drop_down</i>');
-  }
-
-  $('.more-items').toggleClass('open');
 });

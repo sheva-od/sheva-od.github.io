@@ -8,716 +8,170 @@
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<link rel="stylesheet" href="plugins/jquery-date-range-picker/dist/daterangepicker.min.css">
+	<link rel="stylesheet" href="plugins/noUiSlider/nouislider.min.css">
   <link rel="stylesheet" href="css/style.css">
-
-	<script src="https://use.fontawesome.com/41302f5f7b.js"></script>
 
 </head>
 
 <body>
 
-	<div class="flex-container">
+	<nav>
+    <div class="nav-wrapper center">
+      <ul class="nav-links hide-on-small-only">
+        <li class="active"><a href="#privateInfo">Личная информация</a></li>
+        <li><a href="#skills">Опыт</a></li>
+        <li><a href="#jsSkill">JavaScript</a></li>
+        <li><a href="#aboutYourself">О себе</a></li>
+      </ul>
 
-		<div id="sidebar" class="expanded">
-			<div class="sidebar-header custom-shadow">
-				<h5 class="brand-logo left">LOGO</h5>
-				<a class="toggle-menu right" href="#">
-					<i class="material-icons">subject</i>
-				</a>
-			</div>
-			<div class="stats">
-				<div class="row">
-					<div class="col s6">
-						<p class="stats-title">TIME GMT+3</p>
-						<p class="stats-value">11:12</p>
-					</div>
-					<div class="col s6">
-						<p class="stats-title">TODAY TOTAL</p>
-						<p class="stats-value">$4500</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col s6">
-						<p class="stats-title">ACT. OFFERS</p>
-						<p class="stats-value">245<span class="down">-18%</span></p>
-					</div>
-					<div class="col s6">
-						<p class="stats-title">FET. OFFERS</p>
-						<p class="stats-value">102<span class="up">+14%</span></p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col s6">
-						<p class="stats-title">ACT. ADVERTS</p>
-						<p class="stats-value">64<span class="up">+12%</span></p>
-					</div>
-					<div class="col s6">
-						<p class="stats-title">ACTIVE PUBS</p>
-						<p class="stats-value">42<span class="up">+22%</span></p>
-					</div>
-				</div>
-				<div class="row collapsed-only">
-					<div class="col s12">
-						<p class="stats-title">TIME</p>
-						<p class="stats-value">11:12</p>
-					</div>
-					<div class="col s12">
-						<i class="material-icons right down">arrow_drop_down</i>
-						<p class="stats-title">A. OFF.</p>
-						<p class="stats-value">245</p>
-					</div>
-					<div class="col s12">
-						<i class="material-icons right up">arrow_drop_down</i>
-						<p class="stats-title">A. ADV.</p>
-						<p class="stats-value">64</p>
-					</div>
-				</div>
-			</div>
-
-			<ul class="menu">
-				<li>
-					<a href="#">
-						<span class="icon-swap">
-							<i class="fa fa-id-card-o" aria-hidden="true"></i>
-						</span>
-						<p>Dashboard</p>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<span class="icon-swap">
-							<i class="fa fa-line-chart" aria-hidden="true"></i>
-						</span>
-						<p>Campaigns</p>
-					</a>
-				</li>
-				<li class="side-submenu">
-					<a href="#">
-						<span class="icon-swap">
-							<i class="fa fa-usd" aria-hidden="true"></i>
-						</span>
-						<p>Offers</p>
-						<i class="material-icons right">arrow_drop_down</i>
-						<span class="new badge" data-badge-caption="">125</span>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<span class="icon-swap">
-							<i class="fa fa-check" aria-hidden="true"></i>
-						</span>
-						<p>Approvals</p>
-					</a>
-				</li>
-				<li class="side-submenu active">
-					<a href="#">
-						<span class="icon-swap">
-							<i class="fa fa-file-o" aria-hidden="true"></i>
-						</span>
-						<p>Reports</p>
-						<i class="material-icons right">arrow_drop_down</i>
-					</a>
-					<ul class="side-submenu-dropdown">
-						<li class="hide-on-expanded"><a href="">Reports</a></li>
-						<li><a href="">Dynamic Reports</a></li>
-						<li><a href="">Conversion Reports</a></li>
-						<li><a href="">Caps Usage</a></li>
-						<li><a href="">Server Logs</a></li>
-						<li><a href="">Manager Logs</a></li>
-						<li><a href="">Referrals</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="#">
-						<span class="icon-swap">
-							<i class="material-icons">arrow_drop_down</i>
-						</span>
-						<p>Advertisers</p>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<span class="icon-swap">
-							<i class="material-icons">arrow_drop_down</i>
-						</span>
-						<p>Publishers</p>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<span class="icon-swap">
-							<i class="fa fa-bar-chart" aria-hidden="true"></i>
-						</span>
-						<p>Analytics</p>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<span class="icon-swap">
-							<i class="fa fa-wrench" aria-hidden="true"></i>
-						</span>
-						<p>Tools</p>
-					</a>
-				</li>
+			<ul id="slide-out" class="side-nav">
+				<li class="active"><a href="#privateInfo">Личная информация</a></li>
+				<li><a href="#skills">Опыт</a></li>
+				<li><a href="#jsSkill">JavaScript</a></li>
+				<li><a href="#aboutYourself">О себе</a></li>
 			</ul>
+			<a href="#" data-activates="slide-out" class="button-collapse hide-on-med-and-up"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+	<main>
+		<div class="content-container">
+			<section id="privateInfo" class="center">
+				<h1 class="center main-title">Анкета</h1>
+				<div class="center">
+					<img src="images/private-info-icon.png" alt="icon">
+				</div>
+				<h4 class="section-title">Личная информация</h4>
+				<div class="form-wrap">
+					<div class="input-wrap">
+						<input type="text" placeholder="ФИО" value="Стратан Владислав Александрович">
+					</div>
+					<div class="input-wrap">
+						<select id="yearPicker">
+							<option value="">Год рождения</option>
+						</select>
+					</div>
+					<div class="input-wrap">
+						<input type="text" placeholder="Место проживания" value="Одесса, Украина">
+					</div>
+					<div class="input-wrap">
+						<input type="text" placeholder="Skype" value="skillet07">
+					</div>
+					<div class="input-wrap">
+						<input type="text" placeholder="E-mail" value="stratanvl@gmail.com">
+					</div>
+				</div>
+			</section>
+
+			<section id="skills">
+				<div class="center">
+					<img src="images/experience-icon.png" alt="icon">
+				</div>
+				<h4 class="center section-title">Расскажите о своем опыте</h4>
+				<div class="row skills-row">
+					<div class="col s12 m4">
+						<p>
+							<input id="css" type="checkbox" class="filled-in" checked="checked"/>
+							<label for="css">БЭМ/ООCSS</label>
+						</p>
+						<p>
+							<input id="sass" type="checkbox" class="filled-in" checked="checked"/>
+							<label for="sass">Stylus/Less/Sass</label>
+						</p>
+						<p>
+							<input id="svg" type="checkbox" class="filled-in" checked="checked"/>
+							<label for="svg">Работаю с SVG</label>
+						</p>
+					</div>
+					<div class="col s12 m4">
+						<p>
+							<input id="semant" type="checkbox" class="filled-in" checked="checked"/>
+							<label for="semant">Верстаю семантично</label>
+						</p>
+						<p>
+							<input id="es" type="checkbox" class="filled-in" checked="checked"/>
+							<label for="es">ES2015/ES2016</label>
+						</p>
+						<p>
+							<input id="gulp" type="checkbox" class="filled-in" checked="checked"/>
+							<label for="gulp">Gulp/Grunt</label>
+						</p>
+					</div>
+					<div class="col s12 m4">
+						<p>
+							<input id="webpack" type="checkbox" class="filled-in"/>
+							<label for="webpack">Webpack</label>
+						</p>
+						<p>
+							<input id="jquery" type="checkbox" class="filled-in" checked="checked"/>
+							<label for="jquery">jQuery</label>
+						</p>
+						<p>
+							<input id="git" type="checkbox" class="filled-in" checked="checked"/>
+							<label for="git">Использую Git</label>
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<section id="jsSkill">
+				<div class="center">
+					<img src="images/js-icon.png" alt="icon">
+				</div>
+				<h4 class="center section-title">Уровень владения JavaScript</h4>
+
+				<div class="row slider-props flex-container">
+					<div class="col s3 bottom-align">
+						<p>Не владею</p>
+					</div>
+					<div class="col s3 bottom-align">
+						<p>Использую готовые решения</p>
+					</div>
+					<div class="col s3 bottom-align">
+						<p>Использую готовые решения и умею их переделывать</p>
+					</div>
+					<div class="col s3 right-bottom-align">
+						<p class="right-align">Пишу сложный JS с нуля</p>
+					</div>
+				</div>
+				<div class="slider-wrap">
+					<div class="divider"></div>
+					<div class="divider"></div>
+					<div class="divider"></div>
+					<div class="divider"></div>
+					<div class="slider-scale">
+						<div class="divider"></div>
+						<div class="divider"></div>
+						<div class="divider"></div>
+						<div class="divider"></div>
+					</div>
+					<div id="slider"></div>
+				</div>
+
+			</section>
+
+			<section id="aboutYourself">
+				<div class="center">
+					<img src="images/about-yourself-icon.png" alt="icon">
+				</div>
+				<h4 class="center section-title">Расскажите о себе</h4>
+				<div class="textarea-wrap">
+					<p class="center">Напишите несколько предложений, чем привлекла наша вакансия и что вы ожидаете от работы у нас.</p>
+					<textarea placeholder="Понравилось тем, что..." cols="30" rows="10">Вакансия привлекла тем, что у компании есть репутация и история. От работы ожидаю нового опыта и интересных проектов, т.к. люблю все, что связано с front end разработкой.</textarea>
+				</div>
+			</section>
+
+			<section id="submit">
+				<div class="center">
+					<button class="btn waves-effect waves-light basic-btn" type="submit" name="action">Готово</button>
+				</div>
+			</section>
 		</div>
-
-		<main class="flex-container direction-col relative-element">
-
-			<nav>
-				<div class="nav-wrapper custom-shadow">
-					<a class="toggle-menu left" href="#">
-						<i class="material-icons">subject</i>
-					</a>
-					<h5 class="left page-title">DYNAMIC REPORTS</h5>
-					<a href="#" data-activates="mobile-nav" class="button-collapse right"><i class="material-icons">menu</i></a>
-					<ul class="right hide-on-med-and-down">
-						<li class="alarm-item">
-							<a class="relative-element">
-								<i class="fa fa-bell" aria-hidden="true"></i>
-								<span class="quantity">16</span>
-							</a>
-						</li>
-						<li class="user-item">
-							<a class='dropdown-button valign-wrapper' href='#' data-beloworigin="true" data-activates='dropdown'>
-								<img src="images/avatar.png" alt="" class="avatar circle responsive-img">
-								<div class="user-info">
-									<span>Johnnie Pie</span>
-									<span class="position">Admin</span>
-								</div>
-								<i class="material-icons right">arrow_drop_down</i>
-							</a>
-							<ul id='dropdown' class='dropdown-content'>
-								<li><a href="#">one</a></li>
-								<li class="divider"></li>
-								<li><a href="#">two</a></li>
-							</ul>
-						</li>
-					</ul>
-					<ul class="side-nav" id="mobile-nav">
-						<li><p>Johnnie Pie (Admin)</p></li>
-					</ul>
-				</div>
-			</nav>
-
-			<div class="flex-container space-between tabs-wrap">
-				<div class="valign-wrapper">
-					<ul class="tabs">
-						<li class="tab col s3"><a href="#advertisers">Advertisers</a></li>
-						<li class="tab col s3"><a href="#publishers">Publishers</a></li>
-						<li class="tab col s3"><a href="#offers">Offers</a></li>
-					</ul>
-				</div>
-				<div class="filter-menu">
-					<ul>
-						<li>
-							Show:
-							<a class="toggle-calendar">
-								3 month
-								<i class="material-icons right custom-shadow">arrow_drop_down</i>
-							</a>
-						</li>
-						<li>
-							<a class="waves-effect waves-light btn toggle-filter basic-btn custom-shadow">
-								Filter
-								<i class="fa fa-filter" aria-hidden="true"></i>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-
-			<div id="advertisers" class="col s12">
-				<div class="relative-element">
-
-					<div class="chips-wrap">
-						<div class="chip">
-							CPI
-							<i class="close material-icons">close</i>
-						</div>
-						<div class="chip">
-							Pending
-							<i class="close material-icons">close</i>
-						</div>
-						<div class="chip">
-							Non Incent
-							<i class="close material-icons">close</i>
-						</div>
-						<div class="chip">
-							iPhone
-							<i class="close material-icons">close</i>
-						</div>
-						<a class="waves-effect waves-light btn clear-btn">Clear All</a>
-					</div>
-
-					<div id="filter-wrap" class="custom-shadow">
-
-						<div class="filter-header custom-shadow clearfix">
-							<div class="left">
-								<p>
-									UTC +12 Pacific/Wake
-									<i class="material-icons right">arrow_drop_down</i>
-								</p>
-							</div>
-							<div class="right">
-								<p class="left">Filter</p>
-								<a class="right toggle-filter">
-									<i class="fa fa-times fa-2" aria-hidden="true"></i>
-								</a>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="col s12 m4">
-								<p class="filter-type">Breakdown by</p>
-								<div class="row breakdown-row">
-									<div class="col s12 m12 l6">
-										<p>
-											<input type="checkbox" class="filled-in" id="date"/>
-											<label for="date">Date</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="hour"/>
-											<label for="hour">Hour</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="month"/>
-											<label for="month">Month</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="geo"/>
-											<label for="geo">Geography</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="platform"/>
-											<label for="platform">Platforms</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="offerId" checked="checked"/>
-											<label for="offerId">Offer ID</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="realId" checked="checked"/>
-											<label for="realId">Real ID</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="offerName" checked="checked"/>
-											<label for="offerName">Offer Name</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="advId"/>
-											<label for="advId">Advertiser ID</label>
-										</p>
-									</div>
-									<div class="col s12 m12 l6">
-										<p>
-											<input type="checkbox" class="filled-in" id="advName" checked="checked"/>
-											<label for="advName">Advertiser Name</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="realPubId"/>
-											<label for="realPubId">Real Pub ID</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="pubId"/>
-											<label for="pubId">Pub ID</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="subAffId"/>
-											<label for="subAffId">Sub Aff ID</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="publisherName" checked="checked"/>
-											<label for="publisherName">Publisher Name</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="affManager"/>
-											<label for="affManager">Affiliate Manager</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="accManager"/>
-											<label for="accManager">Account Manager</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="nonZero" checked="checked"/>
-											<label for="nonZero">Non Zero Revenue</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="secretHash"/>
-											<label for="secretHash">Secret Hash</label>
-										</p>
-									</div>
-								</div>
-							</div>
-
-							<div class="col s12 m8">
-								<div class="row">
-
-									<div class="col s12 m6 l4">
-										<p>Applications</p>
-										<div class="input-field">
-											<input placeholder="App ID" type="text" class="filter-text-field">
-										</div>
-										<div class="input-field">
-											<select>
-												<option value="" disabled selected>Countries</option>
-												<option value="1">Ukraine</option>
-												<option value="2">Romania</option>
-												<option value="3">Greece</option>
-											</select>
-										</div>
-										<div class="input-field">
-											<input placeholder="Sub Aff ID" type="text" class="filter-text-field">
-										</div>
-										<div class="input-field">
-											<select>
-												<option value="" disabled selected>Platforms</option>
-												<option value="1">iOS</option>
-												<option value="2">Android</option>
-											</select>
-										</div>
-									</div>
-
-									<div class="col s12 m6 l4">
-										<p>Offers</p>
-										<div class="input-field">
-											<input placeholder="Offer ID, Offer name, Real ID" type="text" class="filter-text-field">
-										</div>
-										<div class="input-field">
-											<select>
-												<option value="" disabled selected>Offers type</option>
-												<option value="1">Offers type 1</option>
-												<option value="2">Offers type 2</option>
-												<option value="3">Offers type 3</option>
-											</select>
-										</div>
-										<div class="input-field">
-											<select>
-												<option value="" disabled selected>Offers category</option>
-												<option value="1">Mobile Apps</option>
-												<option value="2">CPA</option>
-												<option value="3">Dynamic</option>
-											</select>
-										</div>
-									</div>
-
-									<div class="col s12 m6 l4">
-										<p>Type</p>
-										<div class="input-field">
-											<input placeholder="Advertiser ID, Company" type="text" class="filter-text-field">
-										</div>
-										<div class="input-field">
-											<input placeholder="Pub ID, Pub Real ID, Company" type="text" class="filter-text-field">
-										</div>
-										<div class="input-field">
-											<input placeholder="Manager ID" type="text" class="filter-text-field">
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</div>
-						<div class="row more-items">
-							<div class="col s12 m8 xl4">
-								<p class="filter-type">Data Columns</p>
-								<div class="row">
-									<div class="col s12 m6">
-										<p>
-											<input type="checkbox" class="filled-in" id="clicks"/>
-											<label for="clicks">Clicks</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="checker"/>
-											<label for="checker">Checker</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="backTraffic"/>
-											<label for="backTraffic">Back traffic</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="conversions"/>
-											<label for="conversions">Conversions</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="pubConversions"/>
-											<label for="pubConversions">Pub Conversions</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="cpa" checked="checked"/>
-											<label for="cpa">CPA</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="pubsCpa" checked="checked"/>
-											<label for="pubsCpa">Pubs CPA</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="cpc" checked="checked"/>
-											<label for="cpc">CPC</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="cr"/>
-											<label for="cr">CR</label>
-										</p>
-									</div>
-									<div class="col s12 m6">
-										<p>
-											<input type="checkbox" class="filled-in" id="pubCr" checked="checked"/>
-											<label for="pubCr">Pubs CR</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="rpa"/>
-											<label for="rpa">RPA</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="rpc"/>
-											<label for="rpc">RPC</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="costs"/>
-											<label for="costs">Costs</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="revenues" checked="checked"/>
-											<label for="revenues">Revenues</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="extraRevenues"/>
-											<label for="extraRevenues">Extra Revenues</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="profit"/>
-											<label for="profit">Profit</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="pubsDailyCap" checked="checked"/>
-											<label for="pubsDailyCap">Pubs Daily Cap</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="pubsMonthlyCap"/>
-											<label for="pubsMonthlyCap">Pubs Monthly Cap</label>
-										</p>
-									</div>
-								</div>
-							</div>
-
-							<div class="col s12 m4 xl8">
-								<p class="filter-type">Fraud Columns</p>
-								<div class="row">
-									<div class="col s12">
-										<p>
-											<input type="checkbox" class="filled-in" id="duplicates"/>
-											<label for="duplicates">Duplicates</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="duplicatesPerc"/>
-											<label for="duplicatesPerc">Duplicates %</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="minFraud"/>
-											<label for="minFraud">Min Fraud</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="minFraudPerc"/>
-											<label for="minFraudPerc">Min Fraud %</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="hdrProxyClicks"/>
-											<label for="hdrProxyClicks">HDR Proxy Clicks</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="hdrProxyClicksPerc" checked="checked"/>
-											<label for="hdrProxyClicksPerc">HDR Proxy Clicks %</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="hdrProxyConv" checked="checked"/>
-											<label for="hdrProxyConv">HDR Proxy Conv</label>
-										</p>
-										<p>
-											<input type="checkbox" class="filled-in" id="hdrProxyConvPerc" checked="checked"/>
-											<label for="hdrProxyConvPerc">HDR Proxy Conv %</label>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="col s12 m4 center-align">
-								<a href="" id="moreItems">
-									More
-									<i class="material-icons right">arrow_drop_down</i>
-								</a>
-							</div>
-						</div>
-
-						<div class="row apply-row">
-							<div class="col s12 center-align">
-								<a class="waves-effect waves-light btn">Apply</a>
-							</div>
-						</div>
-
-					</div>
-
-					<div class="table-cont">
-						<div class="table-header">
-							<table class="data-table">
-								<tbody>
-									<tr>
-										<td>Offer ID</td>
-										<td>Country</td>
-										<td>Adv. Name</td>
-										<td>Pub. Name</td>
-										<td>Clicks</td>
-										<td>Profit</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<div class="table-wrap">
-							<table class="data-table">
-								<tbody>
-									<tr class="day">
-										<td class="bold"><p>Today</p></td>
-									</tr>
-									<tr>
-										<td>#225074</td>
-										<td class="bold">Taiwan</td>
-										<td>AppThis</td>
-										<td>GreenApp</td>
-										<td class="bold">4</td>
-										<td class="bold">$125</td>
-									</tr>
-									<tr>
-										<td>#225074</td>
-										<td class="bold">Korea</td>
-										<td>RTB LLC</td>
-										<td>GreenApp</td>
-										<td class="bold">6</td>
-										<td class="bold">$172</td>
-									</tr>
-									<tr>
-										<td>#225074</td>
-										<td class="bold">USA</td>
-										<td>AppThis</td>
-										<td>AppThis</td>
-										<td class="bold">4</td>
-										<td class="bold">$68</td>
-									</tr>
-									<tr>
-										<td>#225074</td>
-										<td class="bold">Vietnam</td>
-										<td>RetailApp</td>
-										<td>GreenApp</td>
-										<td class="bold">8</td>
-										<td class="bold">$54</td>
-									</tr>
-
-									<tr class="free-space"></tr>
-									<tr class="day">
-										<td class="bold"><p>Yesterday</p></td>
-									</tr>
-									<tr>
-										<td>#225074</td>
-										<td class="bold">Korea</td>
-										<td>AppThis</td>
-										<td>RetailApp</td>
-										<td class="bold">10</td>
-										<td class="bold">$205</td>
-									</tr>
-									<tr>
-										<td>#225074</td>
-										<td class="bold">Italy</td>
-										<td>RTB LLC</td>
-										<td>AppThis</td>
-										<td class="bold">7</td>
-										<td class="bold">$66</td>
-									</tr>
-									<tr>
-										<td>#225074</td>
-										<td class="bold">Singapore</td>
-										<td>AppThis</td>
-										<td>AppToDo</td>
-										<td class="bold">2</td>
-										<td class="bold">$56</td>
-									</tr>
-									<tr>
-										<td>#225074</td>
-										<td class="bold">Japan</td>
-										<td>AppThat</td>
-										<td>GreenApp</td>
-										<td class="bold">4</td>
-										<td class="bold">$36</td>
-									</tr>
-									<tr>
-										<td>#225074</td>
-										<td class="bold">Greece</td>
-										<td>AppThose</td>
-										<td>AppThis</td>
-										<td class="bold">3</td>
-										<td class="bold">$34</td>
-									</tr>
-									<tr>
-										<td>#225074</td>
-										<td class="bold">France</td>
-										<td>AppWhatever</td>
-										<td>GreenApp</td>
-										<td class="bold">1</td>
-										<td class="bold">$74</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-
-
-				<div class="pagination-wrap relative-element center-align">
-					<ul class="pagination">
-						<li class=""><a href="#"><i class="material-icons">chevron_left</i></a></li>
-						<li class="active"><a href="#">2</a></li>
-						<li><p>of</p></li>
-						<li class=""><a href="#">10</a></li>
-						<li class=""><a href="#"><i class="material-icons">chevron_right</i></a></li>
-					</ul>
-
-					<a class='dropdown-button btn basic-btn custom-shadow page-btn' href='#' data-beloworigin="true" data-activates='pageDropdown'>
-						50 per page
-						<i class="material-icons right">arrow_drop_down</i>
-					</a>
-					<ul id='pageDropdown' class='dropdown-content'>
-						<li><a href="#">25 per page</a></li>
-						<li class="active"><a href="#">50 per page</a></li>
-						<li><a href="#">75 per page</a></li>
-						<li><a href="#">100 per page</a></li>
-					</ul>
-				</div>
-
-				<div class="summary">
-					<table class="data-table">
-						<tbody>
-							<tr>
-								<td class="bold">502 OOFERS</td>
-								<td class="bold">6 COUNTRIES</td>
-								<td class="bold">50 ADVERTS</td>
-								<td class="bold">80 PUBS</td>
-								<td class="bold">524 CLICKS</td>
-								<td class="bold">$10195</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-
-			</div>
-			<div id="publishers" class="col s12">Publishers</div>
-			<div id="offers" class="col s12">Offers</div>
-		</main>
-	</div>
+	</main>
 
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
-	<script src="plugins/moment/min/moment.min.js"></script>
-	<script src="plugins/jquery-date-range-picker/dist/jquery.daterangepicker.min.js"></script>
+	<script src="plugins/noUiSlider/nouislider.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
