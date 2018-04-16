@@ -1,0 +1,171 @@
+.board-wrap {
+  min-height: 100vh;
+}
+
+.tools {
+  align-items: center;
+  display: flex;
+  height: 50px;
+}
+
+.board-wrap {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.board {
+  align-items: flex-start;
+  display: flex;
+  justify-content: center;
+}
+
+.board {
+  flex-direction: column;
+  height: calc(100vmin - 60px);
+  width: calc(100vmin - 60px);
+
+  .row {
+    display: flex;
+    height: 12.5%;
+    width: 100%;
+  }
+
+  .square {
+    position: relative;
+    width: 12.5%;
+    height: 100%;
+  }
+
+  &.brown {
+
+    .row:nth-of-type(odd) {
+
+      .square:nth-of-type(odd) {
+        background-color: #f0d9b5;
+      }
+
+      .square:nth-of-type(even) {
+        background-color: #b58863;
+      }
+    }
+
+    .row:nth-of-type(even) {
+
+      .square:nth-of-type(even) {
+        background-color: #f0d9b5;
+      }
+
+      .square:nth-of-type(odd) {
+        background-color: #b58863;
+      }
+    }
+  }
+
+  &.black {
+
+    .row:nth-of-type(odd) {
+
+      .square:nth-of-type(odd) {
+        background-color: #fff;
+      }
+
+      .square:nth-of-type(even) {
+        background-color: rgba(0, 0, 0, .4);
+      }
+    }
+
+    .row:nth-of-type(even) {
+
+      .square:nth-of-type(even) {
+        background-color: #fff;
+      }
+
+      .square:nth-of-type(odd) {
+        background-color: rgba(0, 0, 0, .4);
+      }
+    }
+  }
+
+  &.blue {
+
+    .row:nth-of-type(odd) {
+
+      .square:nth-of-type(odd) {
+        background-color: rgba($color: #2f9395, $alpha: .7);
+      }
+
+      .square:nth-of-type(even) {
+        background-color: rgba($color: #355c70, $alpha: .7);
+      }
+    }
+
+    .row:nth-of-type(even) {
+
+      .square:nth-of-type(even) {
+        background-color: rgba($color: #2f9395, $alpha: .7);
+      }
+
+      .square:nth-of-type(odd) {
+        background-color: rgba($color: #355c70, $alpha: .7);
+      }
+    }
+  }
+
+  &.red {
+
+    .row:nth-of-type(odd) {
+
+      .square:nth-of-type(odd) {
+        background-color: rgba($color: #f67280, $alpha: .7);
+      }
+
+      .square:nth-of-type(even) {
+        background-color: rgba($color: #ec1c48, $alpha: .7);
+      }
+    }
+
+    .row:nth-of-type(even) {
+
+      .square:nth-of-type(even) {
+        background-color: rgba($color: #f67280, $alpha: .7);
+      }
+
+      .square:nth-of-type(odd) {
+        background-color: rgba($color: #ec1c48, $alpha: .7);
+      }
+    }
+  }
+}
+
+.figure {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  z-index: 2;
+
+  & > img {
+    max-width: 90%;
+  }
+
+  &.disabled {
+    opacity: .5;
+    z-index: 0;
+  }
+}
+
+.figure-area {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+
+  &.highlight {
+    box-shadow: inset 0 0 16px 8px rgba(94, 74, 74, 0.5);
+  }
+}
